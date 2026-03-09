@@ -26,7 +26,8 @@ py -3 examples/certainty_shell_error_sweep.py --csv path/to/barcodes.csv
 ## Data Notes
 
 - Input is expected to be multichannel Polytope tag images and a corresponding mask image.
-- Typical tag panel: `DNA, FLAG, HA, V5, T7, VSV-G, AU1, Myc, S-tag, HSV`.
+- How you obtain the multichannel data, its order and segmentation, is up to you.
+- Typical tag panel: `FLAG, HA, V5, T7, VSV-G, AU1, Myc, S-tag, HSV`. This the construct in order DNA-wise.
 - Channels should be as clean/unmixed as possible before binarization.
 
 ## Contact
