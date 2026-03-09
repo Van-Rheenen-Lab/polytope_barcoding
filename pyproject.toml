@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "polytope_barcoding"
+version = "1.0.3"
+description = "Analysing the images of the polytope project"
+readme = "README.md"
+authors = [{ name = "Jeroen Doornbos", email = "j.doornbos@nki.nl" }, {name = "Tom van Leeuwen", email = "t.vanleeuwen@nki.nl"}, {name = "Daniel Postrach", email = "d.postrach@dkfz-heidelberg.de"}]
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["Barcoding", "Polytope", "Fluorescent images"]
+dependencies = [
+    "numpy",
+    "scipy",
+    "scikit-image",
+    "scikit-learn",
+    "pandas",
+    "matplotlib",
+    "tifffile",
+    "tqdm",
+    "glasbey",
+    "plotly"
+]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = ["black", "bumpver", "pytest", "mypy","pandas-stubs"]
+
+[tool.setuptools]
+py-modules = []
+package-dir = {""="src"}
+
+[tool.mypy]
+python_version = '3.12'
+mypy_path = 'src'
+packages = "polytope_barcoding"
+strict = true
+
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311', 'py312']
+
+[tool.bumpver]
+current_version = "1.0.3"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = true
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'current_version = "{version}"',
+    'version = "{version}"',
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  './src'
+]
