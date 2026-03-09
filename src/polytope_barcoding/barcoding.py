@@ -2,15 +2,6 @@ from .core import Barcoding, CellData
 from skimage.measure import regionprops_table
 import numpy as np
 
-"""
-I need to decide if we want to build this into the binarization
-
-Implementations I still want to do:
-- Some barcoding implementation that checks proximal barcodes to improve binarization
-
-
-"""
-
 
 class GreedyBarcoding(Barcoding):
     def __init__(self, binary_channels, cell_data: CellData):

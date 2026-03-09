@@ -1,32 +1,14 @@
-from types import SimpleNamespace
-from pathlib import Path
-import itertools
-
 from .core import Binarization, CellData
 from skimage.filters import threshold_otsu
-from typing import Literal, Optional, Tuple, Dict
+from typing import Literal
 import numpy as np
 import pandas as pd
 from scipy import ndimage as ndi
-from skimage.measure import regionprops, label
-import warnings
 from itertools import combinations
-from typing import Optional, Iterable, Tuple
+from typing import Optional
 from scipy.signal import find_peaks
 from scipy.stats import gaussian_kde
 from sklearn.mixture import GaussianMixture
-from sklearn.preprocessing import StandardScaler
-from scipy.optimize import linear_sum_assignment
-from sklearn.cluster import KMeans
-
-try:
-    from .em_template_decoder import load_prior_library, run_em_template
-except ImportError:
-    load_prior_library = None
-    run_em_template = None
-
-HistogramSource = Literal["cell_means", "pixels"]
-
 
 def _store_avg_intensities_in_properties(
         cell_data: CellData,
